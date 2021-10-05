@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(echo 📦 & df -h | grep /dev/sda4 | awk '{print $4}')

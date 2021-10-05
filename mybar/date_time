@@ -1,3 +1,4 @@
 #!/bin/bash
-date +"%d/%m/%Y"
+#echo $(echo $(echo 🕑 & date +"%H:%M") & echo $(echo 📅 & date +"%d/%m/%Y"))
+echo $(echo $(echo 🕑 & date +"%H:%M"))
 

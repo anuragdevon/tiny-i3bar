@@ -1,0 +1,3 @@
+#!/bin/bash
+echo $(echo ⛅ & iw dev | grep ssid | awk '{ print $2 }')
+

@@ -1,2 +1,2 @@
 #!/bin/bash
-mpstat | awk 'FNR == 4 {print $4}' 
+echo $(echo  & mpstat | awk 'FNR == 4 {print $4}') 
