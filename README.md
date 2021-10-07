@@ -12,13 +12,19 @@ A simple, fast and  minimalist i3-status bar
     ### Dependencies
     - Option 1(Install the given dependiencies manually):
         - sysstat
-        - to be updated...
+        - netstat
+        - acpi
+        - pamixer
     - Option 2(Install using script provided in repo):
         - Move to directory using `cd ~/.config/i3-mini-bar/`  
         - run the dependencies using `chmod +x dependencies` and `./dependencies`
 
     - Finally restart i3 using `$mod1/4+shift+r` (default)
     - Boom! your status-bar should be ready.
+
+## Examples
+![IMG-1](./images/1.png?raw=true "LABEL-1")
+![IMG-2](./images/2.png?raw=true "LABEL-1")
 
 ## How to contribute
 - Open contributions are welcome :)

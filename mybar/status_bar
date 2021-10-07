@@ -30,10 +30,13 @@ do
         # Date_Time
         ~/.local/bin/scripts/mybar/date_time
 
+        # Sound
+        ~/.local/bin/scripts/mybar/sound
+
         # SECTIONS END--------------------------------------------
 
     echo -n "]"
-sleep 5
+sleep 1
 done
 
 

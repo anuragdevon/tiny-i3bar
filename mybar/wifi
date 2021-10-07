@@ -15,26 +15,38 @@ separator_front() {
     },"
 }
 
+common() {
+  echo -n "\"border\": \"#5e5e5e\","
+  echo -n "\"separator\":false,"
+  echo -n "\"separator_block_width\":0,"
+  echo -n "\"border_top\":2,"
+  echo -n "\"border_bottom\":2,"
+  echo -n "\"border_left\":0,"
+  echo -n "\"border_right\":0"
+}
+
 wifi() {
     
     SSID=$(iw dev | grep ssid | awk '{ print $2 }')
     if [ $SSID ]; then
         # valid connection
-        # separator_front "#00ff1a"
+        separator_front "#000000"
         echo -n "{"
         echo -n "\"name\":\"wifi_conn\","
         echo -n "\"full_text\":\"   ${SSID} \","
-        echo -n "\"color\":\"#ffffff\","
-        echo -n "\"background\":\"#303030\""
+        echo -n "\"color\":\"#008cf7\","
+        echo -n "\"background\":\"#000000\","
+        common
         echo -n "},"
     else
         # no connection
-        # separator_front "#ff001e"
+        separator_front "#000000"
         echo -n "{"
         echo -n "\"name\":\"wifi_no_conn\","
         echo -n "\"full_text\":\" 睊 \","
-        echo -n "\"color\":\"#ffffff\","
-        echo -n "\"background\":\"#303030\""
+        echo -n "\"color\":\"#f70000\","
+        echo -n "\"background\":\"#000000\","
+        common
         echo -n "},"
     fi
 }
