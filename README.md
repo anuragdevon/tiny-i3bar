@@ -24,7 +24,8 @@ A simple, fast and  minimalist i3-status bar
 
 ## Examples
 ![IMG-1](./images/1.png?raw=true "LABEL-1")
-![IMG-2](./images/2.png?raw=true "LABEL-1")
+![IMG-2](./images/2.png?raw=true "LABEL-2")
+![IMG-3](./images/3.png?raw=true "LABEL-3")
 
 ## How to contribute
 - Open contributions are welcome :)
