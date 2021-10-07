@@ -1,3 +1,63 @@
 #!/bin/bash
-echo $(echo " " & acpi | awk '{ print $4 }' | cut -c 1-3)
-#echo $(echo  & acpi | awk '{ print $4 }' & acpi | awk '{ print $5 }')
+
+separator_front() {
+    echo -n "{
+        \"full_text\":\"\",
+        \"separator\":false,
+        \"separator_block_width\":0,
+        \"border\":\"#000000\",
+        \"border_left\":0,
+        \"border_right\":0,
+        \"border_top\":2,
+        \"border_bottom\":2,
+        \"color\":\"$1\",        
+        \"background\":\"#000000\"
+    },"
+}
+
+battery() {
+    
+    BAT=$(acpi | awk '{ print $4 }' | cut -c 1-2)
+    STATUS=$(acpi | awk '{ print $3 }' | cut -c 1)
+    if [ $STATUS == "C" ]; then
+        STATUS="ﮣ"
+    else
+        STATUS=""
+    fi
+
+    if [[ $BAT  == 100 ]]; then
+        # separator_front "#00ff1a"
+        echo -n "{"
+        echo -n "\"name\":\"bat_100\","
+        echo -n "\"full_text\":\"   ${BAT}% ﮤ \","
+        echo -n "\"color\":\"#ffffff\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+    elif [[ $BAT -gt 60 ]]&& [[ $BAT -lt 99 ]]; then
+        # separator_front "#ff001e"
+        echo -n "{"
+        echo -n "\"name\":\"bat60\","
+        echo -n "\"full_text\":\"   ${BAT}% ${STATUS} \","
+        echo -n "\"color\":\"#0dff00\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+
+    elif [[ $BAT -lt 60 ]] && [[ $BAT -gt 25 ]]; then
+        # separator_front "#ff001e"
+        echo -n "{"
+        echo -n "\"name\":\"bat60\","
+        echo -n "\"full_text\":\"   ${BAT}% ${STATUS} \","
+        echo -n "\"color\":\"#eaff00\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+    elif [[ $BAT -lt 25 ]]; then
+        # separator_front "#ff001e"
+        echo -n "{"
+        echo -n "\"name\":\"bat60\","
+        echo -n "\"full_text\":\"   ${BAT}% ${STATUS} \","
+        echo -n "\"color\":\"#ff0019\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+    fi
+}
+battery

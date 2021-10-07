@@ -1,2 +1,30 @@
 #!/bin/bash
-echo $(echo  & mpstat | awk 'FNR == 4 {print $4}') 
+# echo $(echo  & mpstat | awk 'FNR == 4 {print $4}') 
+
+separator_front() {
+    echo -n "{
+        \"full_text\":\"\",
+        \"separator\":false,
+        \"separator_block_width\":0,
+        \"border\":\"#000000\",
+        \"border_left\":0,
+        \"border_right\":0,
+        \"border_top\":2,
+        \"border_bottom\":2,
+        \"color\":\"$1\",        
+        \"background\":\"#000000\"
+    },"
+}
+
+cpu_load() {
+    CPU_LOAD=$(mpstat | awk ' FNR == 4 { print $4 }')
+
+        # separator_front "#303030"
+        echo -n "{"
+        echo -n "\"name\":\"cpu_load\","
+        echo -n "\"full_text\":\" 龍 ${CPU_LOAD} \","
+        echo -n "\"color\":\"#ffffff\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+}
+cpu_load

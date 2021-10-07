@@ -1,2 +1,29 @@
 #!/bin/bash
-echo $(echo 🌀 & free -h | grep Mem | awk '{ print $3 }')
+# echo $(echo 🌀 & free -h | grep Mem | awk '{ print $3 }')
+
+separator_front() {
+    echo -n "{
+        \"full_text\":\"\",
+        \"separator\":false,
+        \"separator_block_width\":0,
+        \"border\":\"#000000\",
+        \"border_left\":0,
+        \"border_right\":0,
+        \"border_top\":2,
+        \"border_bottom\":2,
+        \"color\":\"$1\",        
+        \"background\":\"#000000\"
+    },"
+}
+
+memory () {
+    
+    MEM=$(free -h | grep Mem | awk '{ print $3 }')
+        echo -n "{"
+        echo -n "\"name\":\"mem\","
+        echo -n "\"full_text\":\"  ${MEM} \","
+        echo -n "\"color\":\"#ffffff\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+}
+memory

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 separator_front() {
     echo -n "{
         \"full_text\":\"\",
@@ -14,15 +13,3 @@ separator_front() {
         \"background\":\"#000000\"
     },"
 }
-
-disk_usage () {
-    
-    DISK=$(df -h | grep /dev/sda4 | awk '{print $4}')
-        echo -n "{"
-        echo -n "\"name\":\"disk\","
-        echo -n "\"full_text\":\"  ${DISK} \","
-        echo -n "\"color\":\"#ffffff\","
-        echo -n "\"background\":\"#303030\""
-        echo -n "},"
-}
-disk_usage

@@ -1,4 +1,41 @@
-#!/bin/bash
-#echo $(echo $(echo 🕑 & date +"%H:%M") & echo $(echo 📅 & date +"%d/%m/%Y"))
-echo $(echo $(echo 🕑 & date +"%H:%M"))
+# #!/bin/bash
+# #echo $(echo $(echo 🕑 & date +"%H:%M") & echo $(echo 📅 & date +"%d/%m/%Y"))
+# echo $(echo $(echo 🕑 & date +"%H:%M"))
 
+#!/bin/bash
+
+separator_front() {
+    echo -n "{
+        \"full_text\":\"\",
+        \"separator\":false,
+        \"separator_block_width\":0,
+        \"border\":\"#000000\",
+        \"border_left\":0,
+        \"border_right\":0,
+        \"border_top\":2,
+        \"border_bottom\":2,
+        \"color\":\"$1\",        
+        \"background\":\"#000000\"
+    },"
+}
+
+date_time() {
+
+    TIME=$(date +"%H:%M")
+    DATE=$(date +"%d/%m/%Y")
+
+    echo -n "{"
+    echo -n "\"name\":\"disk\","
+    echo -n "\"full_text\":\"  ${TIME} \","
+    echo -n "\"color\":\"#ffffff\","
+    echo -n "\"background\":\"#303030\""
+    echo -n "},"
+
+    echo -n "{"
+    echo -n "\"name\":\"disk\","
+    echo -n "\"full_text\":\" ﭷ ${DATE} \","
+    echo -n "\"color\":\"#ffffff\","
+    echo -n "\"background\":\"#303030\""
+    echo -n "}"
+}
+date_time

@@ -1,3 +1,41 @@
 #!/bin/bash
-echo $(echo ⛅ & iw dev | grep ssid | awk '{ print $2 }')
 
+separator_front() {
+    echo -n "{
+        \"full_text\":\"\",
+        \"separator\":false,
+        \"separator_block_width\":0,
+        \"border\":\"#000000\",
+        \"border_left\":0,
+        \"border_right\":0,
+        \"border_top\":2,
+        \"border_bottom\":2,
+        \"color\":\"$1\",        
+        \"background\":\"#000000\"
+    },"
+}
+
+wifi() {
+    
+    SSID=$(iw dev | grep ssid | awk '{ print $2 }')
+    if [ $SSID ]; then
+        # valid connection
+        # separator_front "#00ff1a"
+        echo -n "{"
+        echo -n "\"name\":\"wifi_conn\","
+        echo -n "\"full_text\":\"   ${SSID} \","
+        echo -n "\"color\":\"#ffffff\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+    else
+        # no connection
+        # separator_front "#ff001e"
+        echo -n "{"
+        echo -n "\"name\":\"wifi_no_conn\","
+        echo -n "\"full_text\":\" 睊 \","
+        echo -n "\"color\":\"#ffffff\","
+        echo -n "\"background\":\"#303030\""
+        echo -n "},"
+    fi
+}
+wifi
